@@ -1,0 +1,24 @@
+import os
+import sys
+import glob
+        
+join = os.path.join
+base = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
+base = os.path.dirname(base)
+
+os.environ['PROJECT_HOME'] = base
+
+sys.path.insert(0, join(base, 'src'))
+sys.path.insert(0, join(base, 'conf'))
+
+print 'Env Variables:'
+print '- PROJECT_HOME = ' + os.environ['QNAP_HOME']
+print ''
+print 'sys.path:'
+print sys.path
+print ''
+
+import worker_daemon
+
+if __name__ == '__main__':
+    sys.exit(worker_daemon.main())
